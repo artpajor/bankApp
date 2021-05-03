@@ -69,7 +69,7 @@ let transferCoinsTo = (db, accountName, newBalance) => {
 
 // app.post('/login', (req, res) => {
 //     if (!req.body.username || !req.body.password) {
-//         return res.send('you did not provide username or password, you fool!');
+//         return res.send('you did not provide username or password');
 //     }
 //
 //     let accountHolder = accountHolders.find((u) => {
@@ -77,7 +77,7 @@ let transferCoinsTo = (db, accountName, newBalance) => {
 //     })
 //
 //     if (!accountHolder) {
-//         return res.send('looooser!');
+//         return res.send('you don't exist, sorry');
 //     }
 //
 //     let token = jwt.sign({
@@ -119,7 +119,7 @@ app.delete('/accounts/:id', (req, res) => {
         let db = client.db('coin4u');
         deleteAccount(db, id);
     })
-    res.json({message: "this person is no longer with us. yay!"});
+    res.json({message: "this person is no longer with us"});
 })
 
 app.put('/accounts', (req, res) => {
@@ -130,7 +130,7 @@ app.put('/accounts', (req, res) => {
         let db = client.db('coin4u');
         updateBalance(db, accountName, newBalance);
     });
-    res.json('someone just got lucky or broke!');
+    res.json('you just made or received a transfer');
 })
 
 app.get('/accounts', async (req, res) => {
@@ -159,7 +159,7 @@ app.post('/accounts', (req, res) => {
         let db = client.db('coin4u');
         addAccount(db, newAccount);
     });
-    res.json('new creature joined your funny bank');
+    res.json('someone new joined the bank');
 })
 
 
